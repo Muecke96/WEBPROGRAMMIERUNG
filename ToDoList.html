@@ -6,17 +6,17 @@
 window.onload = init;
 function init() {
 	var button = document.getElementById('mehr');
-	button.onclick = ToDoHinzufügen;
+	button.onclick = ToDoHinzufÃ¼gen;
 	var clearButton = document.getElementById('loeschen');
-	clearButton.onclick = allesLöschen;
-	var eintraegeArray = HolEinträge();
+	clearButton.onclick = allesLÃ¶schen;
+	var eintraegeArray = HolEintrÃ¤ge();
 	for (var i = 0; i < eintraegeArray.length; i++) {
 		var aufgabeNr = eintraegeArray[i];
 		var value = JSON.parse(localStorage[aufgabeNr]);
 		insDOMschreiben(aufgabeNr, value);
 	}	
 }
-function HolEinträge() {
+function HolEintrÃ¤ge() {
 	var eintraegeArray = localStorage.getItem('eintraegeArray');
 	if (!eintraegeArray) {
 		eintraegeArray = [];
@@ -27,8 +27,8 @@ function HolEinträge() {
 	return eintraegeArray;
 }
 
-function ToDoHinzufügen() {
-	var eintraegeArray = HolEinträge();
+function ToDoHinzufÃ¼gen() {
+	var eintraegeArray = HolEintrÃ¤ge();
 	var value = document.getElementById('eingabe').value;
 	if(value!='')
 	{
@@ -47,9 +47,9 @@ function ToDoHinzufügen() {
 	}
 }
 
-function toDoLöschen(e) {
+function toDoLÃ¶schen(e) {
 	var aufgabeNr = e.target.id;
-	var eintraegeArray = HolEinträge();
+	var eintraegeArray = HolEintrÃ¤ge();
 	if (eintraegeArray) {
 		for (var i = 0; i < eintraegeArray.length; i++) {
 			if (aufgabeNr == eintraegeArray[i]) {
@@ -68,7 +68,7 @@ function insDOMschreiben(aufgabeNr, ItemObj) {
 	eintrag.setAttribute('id', aufgabeNr);
     eintrag.innerHTML = ItemObj.value;
 	eintraege.appendChild(eintrag);
-	eintrag.onclick = toDoLöschen;
+	eintrag.onclick = toDoLÃ¶schen;
 }
 
 function ausDOMentfernen(aufgabeNr) {
@@ -76,14 +76,14 @@ function ausDOMentfernen(aufgabeNr) {
 	eintrag.parentNode.removeChild(eintrag);
 }
 
-function allesLöschen() {
+function allesLÃ¶schen() {
 	localStorage.clear();
 	var ItemList = document.getElementById('eintraege');
 	var eintraege = ItemList.childNodes;
 	for (var i = eintraege.length-1; i >= 0; i--) {
 		ItemList.removeChild(eintraege[i]);
 	}
-	var eintraegeArray = HolEinträge();
+	var eintraegeArray = HolEintrÃ¤ge();
 }
 
 
@@ -101,7 +101,7 @@ function allesLöschen() {
 	<form>		
 		<label for="eingabe">neues Projekt </label><input id="eingabe" value="" type="text">
 		<button id="mehr">neuer Eintrag</button>
-		<button id="loeschen">Einträge löschen </button>
+		<button id="loeschen">EintrÃ¤ge lÃ¶schen </button>
 	</form>
     
 
